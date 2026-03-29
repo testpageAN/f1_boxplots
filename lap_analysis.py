@@ -4,7 +4,7 @@ F1 Race Lap Analysis
 Διαβάζει γυρολόγιο από επίσημο PDF F1 Race Lap Analysis και δημιουργεί box plot.
 """
 
-import os
+from pathlib import Path
 import re
 from collections import defaultdict
 
@@ -23,12 +23,10 @@ country = extract_race(PDF_PATH)
 # Επιθέτα οδηγών με κεφαλαία (όπως εμφανίζονται στο PDF)
 SELECTED_DRIVERS = ["ANTONELLI", "PIASTRI", "LECLERC", "RUSSELL", "NORRIS", "HAMILTON"]
 OTHER_DRIVERS = ["VERSTAPPEN"]
-# OUTPUT_IMAGE = f"/home/alexis/Documents/python_lessons/formula_1/chart_plots/lap_times_boxplot_{country}.png"
-root_directory = os.path.dirname(__file__)
-charts_directory = os.path.join(root_directory, "charts_plots")
-if not os.path.isdir(charts_directory):
-    os.makedirs(charts_directory)
-OUTPUT_IMAGE = os.path.join(os.getcwd(), charts_directory, f"lap_times_boxplot_{country}.png")
+
+charts_directory = Path(__file__).parent / "charts_plots"
+charts_directory.mkdir(exist_ok=True)
+OUTPUT_IMAGE = charts_directory / f"lap_times_boxplot_{country}.png"
 
 # Εύρος Y-άξονα (M:SS.mmm). None = αυτόματο εύρος (εμφανίζονται όλα).
 Y_MIN = "1:32.000"
