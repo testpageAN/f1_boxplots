@@ -15,10 +15,11 @@ import matplotlib.pyplot as plt
 from my_test import extract_race
 
 # ── CONFIGURATION ──────────────────────────────────────────────────────────────
-PDF_PATH = "/home/alexis/Documents/python_lessons/formula_1/data_files/2026_03_jpn_f1_r0_timing_racelapanalysis_v01.pdf"
+PDF_FILENAME = "2026_03_jpn_f1_r0_timing_racelapanalysis_v01.pdf"
+PDF_PATH = Path(__file__).parent / "data_files" / PDF_FILENAME
 
 # Extract country
-country = extract_race(PDF_PATH)
+country = extract_race(PDF_FILENAME)
 
 # Επιθέτα οδηγών με κεφαλαία (όπως εμφανίζονται στο PDF)
 SELECTED_DRIVERS = ["ANTONELLI", "PIASTRI", "LECLERC", "RUSSELL", "NORRIS", "HAMILTON"]
