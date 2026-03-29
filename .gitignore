@@ -1,0 +1,5 @@
+.venv/
+.env
+
+charts_plots/
+data_files/
